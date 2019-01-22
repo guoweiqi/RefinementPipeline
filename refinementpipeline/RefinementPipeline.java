@@ -10,7 +10,7 @@ class PipelineFunction {
      * List of structures that have no Homology Models, but we want to use the
      * experimental structures.
      */
-    public String getExperimental = "GJB2";
+    public List<String> getExperimental = Arrays.asList("GJB2");
     /**
      * If true, checks against Github before downloading the DVD structure.
      */
@@ -536,8 +536,8 @@ class PipelineFunction {
                     }
                 }
 
-                if (gene.contains(getExperimental)) {
-                    System.out.println("Grabbing experimental structures");
+                if (getExperimental.contains(gene)) {
+                    System.out.println("Downloading experimental structures for " + gene);
                     //grab the link for the experimental structure, add to pdbLinks list
                     //include filler data for the sequence identity
                     BufferedReader br3 = new BufferedReader(new InputStreamReader(pageObj.openStream()));
